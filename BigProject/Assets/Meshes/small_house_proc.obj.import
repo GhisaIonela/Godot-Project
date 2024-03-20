@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddo6gl16dy78"
+path="res://.godot/imported/small_house_proc.obj-643d750fce20dac1883c086937c9cb72.mesh"
+
+[deps]
+
+files=["res://.godot/imported/small_house_proc.obj-643d750fce20dac1883c086937c9cb72.mesh"]
+
+source_file="res://Assets/Meshes/small_house_proc.obj"
+dest_files=["res://.godot/imported/small_house_proc.obj-643d750fce20dac1883c086937c9cb72.mesh", "res://.godot/imported/small_house_proc.obj-643d750fce20dac1883c086937c9cb72.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

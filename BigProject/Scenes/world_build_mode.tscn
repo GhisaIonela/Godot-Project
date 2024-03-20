@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://dis7axo4lsap7"]
+
+[ext_resource type="Script" path="res://Scenes/world_build_mode.gd" id="1_amgue"]
+[ext_resource type="PackedScene" uid="uid://dw1jubyi68tc" path="res://GUI/world_build_menu.tscn" id="1_hnbxj"]
+[ext_resource type="PackedScene" uid="uid://b78l6pqnjd3mm" path="res://Scenes/Components/tile_repository.tscn" id="2_o1cur"]
+[ext_resource type="PackedScene" uid="uid://bn7tq3vg8yjyw" path="res://Scenes/Components/camera_frame.tscn" id="3_s36ep"]
+[ext_resource type="PackedScene" uid="uid://c6a2mbesi8yh4" path="res://Scenes/Components/selection.tscn" id="4_oq84a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_456ia"]
+ground_bottom_color = Color(0.14902, 0.168627, 0.247059, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_u0qkx"]
+sky_material = SubResource("ProceduralSkyMaterial_456ia")
+
+[sub_resource type="Environment" id="Environment_f7unf"]
+background_mode = 2
+background_color = Color(0.145098, 0.298039, 0.4, 1)
+sky = SubResource("Sky_u0qkx")
+fog_density = 0.4732
+fog_height_density = 16.0
+volumetric_fog_density = 1.2195
+volumetric_fog_emission = Color(1, 0, 0.227451, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_gi_inject = 2.85
+volumetric_fog_length = 452.04
+adjustment_brightness = 1.5
+adjustment_contrast = 1.76
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51aj7"]
+size = Vector3(50, 1, 50)
+
+[node name="WorldBuildMode" type="Node3D"]
+script = ExtResource("1_amgue")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 14.0059, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f7unf")
+
+[node name="TileRepository" parent="." instance=ExtResource("2_o1cur")]
+
+[node name="CameraFrame" parent="." instance=ExtResource("3_s36ep")]
+camera_position = Vector3(0, 16, 23)
+camera_rotation = Vector3(-30, 0, 0)
+camera_fov = 60
+
+[node name="Selection" parent="." instance=ExtResource("4_oq84a")]
+visible = false
+
+[node name="BoundsStaticBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoundsStaticBody"]
+shape = SubResource("BoxShape3D_51aj7")
+disabled = true
+
+[node name="WorldBuildMenu" parent="." instance=ExtResource("1_hnbxj")]
+mouse_filter = 1

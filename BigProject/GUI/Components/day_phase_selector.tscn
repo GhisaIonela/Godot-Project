@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://wo5h7wuonu58"]
+
+[ext_resource type="Texture2D" uid="uid://bgkpwpsoecd7y" path="res://Assets/Icons/Placeholders/sun.png" id="1_3l63m"]
+[ext_resource type="Script" path="res://GUI/Components/day_phase_selector.gd" id="1_vol0v"]
+[ext_resource type="Texture2D" uid="uid://dstve1h5xj7wh" path="res://Assets/Icons/Placeholders/moon.png" id="2_7fg3t"]
+
+[sub_resource type="Gradient" id="Gradient_uwle7"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.2, 0.466667, 0.866667)
+colors = PackedColorArray(0.9, 0.85515, 0.693, 1, 0.807843, 0.870588, 1, 1, 0, 0.592157, 1, 1, 0.088, 0.11, 0.22, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 15
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pglo2"]
+gradient = SubResource("Gradient_uwle7")
+height = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by56v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1e7q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t3ukp"]
+
+[sub_resource type="Theme" id="Theme_kbea2"]
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_by56v")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_v1e7q")
+HSlider/styles/slider = SubResource("StyleBoxEmpty_t3ukp")
+
+[node name="DayPhaseSelector" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_vol0v")
+
+[node name="GradientSample" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_pglo2")
+
+[node name="SunTexture" type="TextureRect" parent="GradientSample"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 16.0
+grow_vertical = 2
+texture = ExtResource("1_3l63m")
+
+[node name="MoonTexture" type="TextureRect" parent="GradientSample"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_7fg3t")
+
+[node name="Slider" type="HSlider" parent="GradientSample"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_kbea2")
+theme_override_icons/grabber = ExtResource("1_3l63m")
+max_value = 1.0
+step = 0.01
+
+[connection signal="value_changed" from="GradientSample/Slider" to="." method="_on_slider_value_changed"]

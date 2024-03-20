@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6a2mbesi8yh4"]
+
+[ext_resource type="Script" path="res://Scenes/Components/selection.gd" id="1_0u67r"]
+[ext_resource type="Material" uid="uid://bgyapfy4wrl3t" path="res://Assets/Shaders/selection.tres" id="2_u54ss"]
+[ext_resource type="PackedScene" uid="uid://dobelxlk1ab2u" path="res://Assets/Objects/Tiles/block.glb" id="3_gljio"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r7ry0"]
+material = ExtResource("2_u54ss")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_andnw"]
+
+[node name="Selection" type="Node3D"]
+script = ExtResource("1_0u67r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_r7ry0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_andnw")
+
+[node name="Model" parent="." instance=ExtResource("3_gljio")]
+visible = false
+
+[node name="cube" parent="Model" index="0"]
+surface_material_override/0 = ExtResource("2_u54ss")
+
+[editable path="Model"]

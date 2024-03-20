@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0v81lnyxbf3q"]
+
+[ext_resource type="Texture2D" uid="uid://ohyboqquj1ng" path="res://Assets/Textures/Borders/border1.png" id="1_e0leu"]
+[ext_resource type="Script" path="res://GUI/Components/tile_preview.gd" id="1_iul4p"]
+[ext_resource type="PackedScene" uid="uid://dobelxlk1ab2u" path="res://Assets/Objects/Tiles/block.glb" id="3_ah31d"]
+
+[node name="TilePreview" type="Control"]
+custom_minimum_size = Vector2(168, 168)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 168.0
+offset_bottom = 168.0
+script = ExtResource("1_iul4p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_e0leu")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer2"]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/MarginContainer2/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/MarginContainer2/Button/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 1
+screen_space_aa = 1
+size = Vector2i(8, 8)
+render_target_update_mode = 4
+
+[node name="Model" parent="MarginContainer/MarginContainer2/Button/SubViewportContainer/SubViewport" instance=ExtResource("3_ah31d")]
+
+[node name="cube" parent="MarginContainer/MarginContainer2/Button/SubViewportContainer/SubViewport/Model" index="0"]
+layers = 2
+
+[node name="Camera3D" type="Camera3D" parent="MarginContainer/MarginContainer2/Button/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.707107, 0.353553, -0.612373, 4.37114e-08, 0.866026, 0.499999, 0.707107, 0.353553, -0.612373, -1.5, 1.15, -1.5)
+cull_mask = 1047554
+fov = 46.2
+
+[editable path="MarginContainer/MarginContainer2/Button/SubViewportContainer/SubViewport/Model"]

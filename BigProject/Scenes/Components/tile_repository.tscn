@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b78l6pqnjd3mm"]
+
+[ext_resource type="Script" path="res://Scenes/Components/tile_repository.gd" id="1_t5lep"]
+
+[node name="TileRepository" type="Node3D"]
+script = ExtResource("1_t5lep")

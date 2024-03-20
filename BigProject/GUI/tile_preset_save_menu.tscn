@@ -1,0 +1,304 @@
+[gd_scene load_steps=8 format=3 uid="uid://drcokcbk71vnn"]
+
+[ext_resource type="Script" path="res://GUI/tile_preset_save_menu.gd" id="1_7fuky"]
+[ext_resource type="Texture2D" uid="uid://e3dey430fdr5" path="res://Assets/Textures/Backgrounds/titlescreen1080p.jpg" id="2_77n4h"]
+[ext_resource type="Texture2D" uid="uid://ohyboqquj1ng" path="res://Assets/Textures/Borders/border1.png" id="3_phv3y"]
+[ext_resource type="ArrayMesh" uid="uid://csl0o1r0wmx6h" path="res://Assets/Meshes/default.obj" id="4_ca26q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l8631"]
+
+[sub_resource type="Sky" id="Sky_irrmx"]
+sky_material = SubResource("ProceduralSkyMaterial_l8631")
+
+[sub_resource type="Environment" id="Environment_sxnt8"]
+background_mode = 2
+sky = SubResource("Sky_irrmx")
+ambient_light_source = 3
+
+[node name="TilePresetSaveMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7fuky")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_77n4h")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Presets"
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Presets" type="FlowContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_phv3y")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch = true
+
+[node name="Preview" type="SubViewport" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/MarginContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+msaa_2d = 3
+msaa_3d = 3
+screen_space_aa = 1
+mesh_lod_threshold = 0.0
+scaling_3d_mode = 2
+scaling_3d_scale = 2.0
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/MarginContainer/SubViewportContainer/Preview"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/MarginContainer/SubViewportContainer/Preview"]
+environment = SubResource("Environment_sxnt8")
+
+[node name="model" type="MeshInstance3D" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/MarginContainer/SubViewportContainer/Preview"]
+transform = Transform3D(-0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, -0.906308, 0, 0, 0)
+mesh = ExtResource("4_ca26q")
+skeleton = NodePath("../../../../..")
+
+[node name="Camera3D" type="Camera3D" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/MarginContainer/SubViewportContainer/Preview"]
+transform = Transform3D(-0.707107, 0.353553, -0.612373, 4.37114e-08, 0.866026, 0.499999, 0.707107, 0.353553, -0.612373, -1.5, 1.15, -1.5)
+cull_mask = 1047553
+fov = 46.2
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PropContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="tid" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/tid"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tile ID"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/tid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="category" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/category"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Category"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/category"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="rotatable" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/rotatable"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Rotatable"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/rotatable"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "x"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/rotatable"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/rotatable"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "y"
+
+[node name="CheckBox2" type="CheckBox" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/rotatable"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/rotatable"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "z"
+
+[node name="CheckBox3" type="CheckBox" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/rotatable"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="size" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/size"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Size"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/size"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "x"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/size" groups=["size"]]
+layout_mode = 2
+min_value = 1.0
+max_value = 50.0
+value = 1.0
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/size"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "y"
+
+[node name="SpinBox2" type="SpinBox" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/size" groups=["size"]]
+layout_mode = 2
+min_value = 1.0
+max_value = 50.0
+value = 1.0
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/size"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "z"
+
+[node name="SpinBox3" type="SpinBox" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/size" groups=["size"]]
+layout_mode = 2
+min_value = 1.0
+max_value = 50.0
+value = 1.0
+
+[node name="model" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/model"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Object"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/model"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="ModelButton" type="Button" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/model"]
+layout_mode = 2
+disabled = true
+text = "Browse"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer"]
+layout_mode = 2
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="NewPresetButton" type="Button" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "SAVE"
+
+[node name="DeletePresetButton" type="Button" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "X"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/tid/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/ScrollContainer/PropContainer/model/ModelButton" to="." method="_on_model_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/HBoxContainer/NewPresetButton" to="." method="_on_new_preset_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Panel/HBoxContainer/RightContainer/HBoxContainer/DeletePresetButton" to="." method="_on_delete_preset_button_pressed"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn7tq3vg8yjyw"]
+
+[ext_resource type="Script" path="res://Scenes/Components/camera_frame.gd" id="1_iisya"]
+
+[node name="CameraFrame" type="Node3D"]
+script = ExtResource("1_iisya")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+cull_mask = 1048573

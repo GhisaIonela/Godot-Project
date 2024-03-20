@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d1ltocv64m1d6"
+path="res://.godot/imported/stairs_inner_corner.obj-982bc390322c062ba9ddedc37d819207.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stairs_inner_corner.obj-982bc390322c062ba9ddedc37d819207.mesh"]
+
+source_file="res://Assets/Meshes/stairs_inner_corner.obj"
+dest_files=["res://.godot/imported/stairs_inner_corner.obj-982bc390322c062ba9ddedc37d819207.mesh", "res://.godot/imported/stairs_inner_corner.obj-982bc390322c062ba9ddedc37d819207.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

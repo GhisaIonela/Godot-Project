@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bydia88ngisvf"]
+
+[ext_resource type="Script" path="res://GUI/start_menu.gd" id="1_hu76q"]
+[ext_resource type="Texture2D" uid="uid://e3dey430fdr5" path="res://Assets/Textures/Backgrounds/titlescreen1080p.jpg" id="1_umy0f"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hu76q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_umy0f")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "StartMenu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -33.0
+offset_right = 27.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldButton" type="Button" parent="VBoxContainer" groups=["load_scene_trigger"]]
+layout_mode = 2
+text = "World"
+
+[node name="BackButton" type="Button" parent="VBoxContainer" groups=["load_scene_trigger"]]
+layout_mode = 2
+text = "Back"

@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw1jubyi68tc"]
+
+[ext_resource type="PackedScene" uid="uid://d0v81lnyxbf3q" path="res://GUI/Components/tile_preview.tscn" id="1_6q3lg"]
+[ext_resource type="Script" path="res://GUI/world_build_menu.gd" id="1_kk23r"]
+[ext_resource type="PackedScene" uid="uid://wo5h7wuonu58" path="res://GUI/Components/day_phase_selector.tscn" id="2_28842"]
+[ext_resource type="Shader" path="res://Assets/Shaders/grayscale.gdshader" id="3_idoxc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46jyl"]
+shader = ExtResource("3_idoxc")
+
+[node name="WorldBuildMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kk23r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0875
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="Button" parent="VBoxContainer" groups=["load_scene_trigger"]]
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+text = "Back"
+
+[node name="DayPhaseSelector" parent="VBoxContainer" instance=ExtResource("2_28842")]
+layout_mode = 2
+
+[node name="TilePreview" parent="VBoxContainer" instance=ExtResource("1_6q3lg")]
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TilePreview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RotateTileLeftButton" type="Button" parent="VBoxContainer/TilePreview/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "<"
+flat = true
+
+[node name="RotateTileRightButton" type="Button" parent="VBoxContainer/TilePreview/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = ">"
+flat = true
+
+[node name="BuildTiles" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+tab_alignment = 1
+use_hidden_tabs_for_min_size = true
+tab_focus_mode = 0
+
+[node name="BlocksContainer" type="VBoxContainer" parent="VBoxContainer/BuildTiles"]
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/BuildTiles/BlocksContainer"]
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/BuildTiles"]
+visible = false
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/BuildTiles/VBoxContainer2"]
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/BuildTiles"]
+visible = false
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/BuildTiles/VBoxContainer3"]
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+alignment = 1
+
+[node name="Filter" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_46jyl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

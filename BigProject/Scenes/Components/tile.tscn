@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbqrkl16a6fd1"]
+
+[ext_resource type="Script" path="res://Scenes/Components/tile.gd" id="1_pkfya"]
+[ext_resource type="PackedScene" uid="uid://dobelxlk1ab2u" path="res://Assets/Objects/Tiles/block.glb" id="2_w1lpv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4gtat"]
+resource_local_to_scene = true
+size = Vector3(0.999, 0.999, 0.999)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nu5sb"]
+resource_local_to_scene = true
+size = Vector3(0.999, 0.999, 0.999)
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_pkfya")
+
+[node name="Model" parent="." instance=ExtResource("2_w1lpv")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_4gtat")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_nu5sb")
+
+[connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dg2q0wa0ncfcg"
+path="res://.godot/imported/parented_objects.obj-0ff8b2280026a3007af289632a4d5257.mesh"
+
+[deps]
+
+files=["res://.godot/imported/parented_objects.obj-0ff8b2280026a3007af289632a4d5257.mesh"]
+
+source_file="res://Assets/Blender/parented_objects.obj"
+dest_files=["res://.godot/imported/parented_objects.obj-0ff8b2280026a3007af289632a4d5257.mesh", "res://.godot/imported/parented_objects.obj-0ff8b2280026a3007af289632a4d5257.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
