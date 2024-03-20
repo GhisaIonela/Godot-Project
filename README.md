@@ -7,8 +7,8 @@ Main features:
   left-click and hold to select multiple blocks and release to see advanced options (currently on;y insert and delete)
 
 - camera controls:
-  move back and forth, left and right by pressing WASD keys
-  rotate the camera around by dragging the mouse while holding the middle mouse key
+  move back and forth, left and right by pressing WASD keys;
+  rotate the camera around by dragging the mouse while holding the middle mouse key;
   zoom in and out by using the mouse wheel
 
 - slider for changing the phase of the day
