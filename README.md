@@ -1,4 +1,4 @@
-# Godot Project
+# PolyScape Creator
 
 PolyScape Creator is a 3D world-building game developed using the Godot game engine. It allows users to create custom low-poly environments using a tile-based system.
 
